@@ -141,6 +141,7 @@ const AURA_FRAMES = [
 ];
 
 const WAVE_DELAYS = [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9];
+const WAVE_HEIGHTS = WAVE_DELAYS.map(() => `${30 + Math.random() * 50}%`);
 
 function AuraHomeSpotlight() {
   const [frameIdx, setFrameIdx] = useState(0);
@@ -209,7 +210,7 @@ function AuraHomeSpotlight() {
                   <span
                     key={i}
                     className="bar"
-                    style={{ animationDelay: `${d}s`, height: `${30 + Math.random() * 50}%` }}
+                    style={{ animationDelay: `${d}s`, height: WAVE_HEIGHTS[i] }}
                   />
                 ))}
               </div>

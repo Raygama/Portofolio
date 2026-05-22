@@ -60,8 +60,7 @@ The entire visual system runs off CSS custom properties — one `globals.css` fi
 
 ## Project Structure
 
-```
-web/                          # Next.js app root (git repo lives here)
+```                        # Next.js app root (git repo lives here)
 ├── app/
 │   ├── page.tsx              # Home — Hero, AURA spotlight, case studies, blog strip
 │   ├── layout.tsx            # Root layout — fonts, metadata, NavBar wrapper
@@ -115,8 +114,7 @@ web/                          # Next.js app root (git repo lives here)
 ### 1. Clone
 
 ```bash
-git clone https://github.com/Raygama/porto-v2.git
-cd porto-v2/web
+git clone https://github.com/Raygama/Portofolio.git
 ```
 
 ### 2. Install Dependencies
@@ -336,7 +334,7 @@ Headings use **Syne** (geometric sans), body uses **Inter**, code/mono uses **Je
 
 ## Available Scripts
 
-Run from the `web/` directory:
+Run from the `root` directory:
 
 | Command | Description |
 |---|---|
@@ -369,7 +367,6 @@ Deployed on **Vercel**. Every push to `main` triggers an automatic deploy.
 **1. Push to GitHub:**
 
 ```bash
-# from web/
 git remote add origin https://github.com/Raygama/porto-v2.git
 git branch -M main
 git add .
@@ -381,8 +378,7 @@ git push -u origin main
 
 1. Go to [vercel.com](https://vercel.com) → **Add New Project**
 2. Import the GitHub repo
-3. Set **Root Directory** to `web` ← critical, otherwise Vercel looks for Next.js at the repo root
-4. Hit **Deploy**
+3. Hit **Deploy**
 
 No environment variables required — the site is fully static.
 
@@ -400,22 +396,10 @@ Vercel picks it up automatically.
 
 ```bash
 npm i -g vercel
-cd web
 vercel --prod
 ```
 
 ---
-
-## Troubleshooting
-
-### `Module not found: @/*`
-
-The `@/*` path alias maps to `web/*` (configured in `tsconfig.json`). If you see this error, make sure you're running commands from inside `web/`, not from `porto_v2/`.
-
-```bash
-cd web
-npm run dev  # ✓
-```
 
 ### Build fails with "Static generation failed"
 
@@ -429,20 +413,16 @@ Look for the specific page that failed. Common cause: using `window` or `documen
 
 ### Images not loading (`/assets/...` returns 404)
 
-All images must be under `web/public/assets/`. Check the path:
+All images must be under `/public/assets/`. Check the path:
 
 ```
-web/public/assets/aura/aura-01-idle.png  →  /assets/aura/aura-01-idle.png  ✓
-web/assets/aura/aura-01-idle.png         →  404                             ✗
+/public/assets/aura/aura-01-idle.png  →  /assets/aura/aura-01-idle.png  ✓
+/assets/aura/aura-01-idle.png         →  404                             ✗
 ```
 
 ### Fonts look wrong / fallback fonts showing
 
 Google Fonts are loaded via `next/font` in `app/layout.tsx`. If you see system fonts, the CSS variables aren't applying. Check that `--font-syne`, `--font-jetbrains`, and `--font-caveat` are set on `:root` in `globals.css` and that the font variables from layout are passed through correctly.
-
-### `npm run build` passes but Vercel deploy fails
-
-Make sure **Root Directory** in Vercel project settings is set to `web`. If it's set to the repo root, Vercel won't find `package.json` and will fail.
 
 ---
 

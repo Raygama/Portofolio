@@ -426,8 +426,7 @@ function OtherProjects() {
       tags: ['Python', 'scikit-learn', 'KNN', 'Signal Processing'],
       year: '2024',
       links: [
-        { label: 'Details', href: 'https://drive.google.com/file/d/1-O1mrBcMhC_LUtWhOXZO5HBHVY8JzP89/view' },
-        { label: 'Notebook', href: 'https://colab.research.google.com/drive/11RqgTYM-RVkQPu21eyALhkxnGHhM0Ctj?usp=sharing' },
+        { label: 'Notebook', href: 'https://colab.research.google.com/drive/11RqgTYM-RVkQPu21eyALhkxnGHhM0Ctj?usp=sharing' }
       ],
     },
     {

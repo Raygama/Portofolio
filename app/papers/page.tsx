@@ -10,11 +10,10 @@ export const metadata = {
 const papers = [
   {
     title: 'Prescriptive and Contextual Technical Debt Management with LLM and SonarQube',
-    venue: 'Submitted to IEEE',
     year: '2026',
-    status: 'Ongoing Publishing',
+    status: 'Published',
     tags: ['LLM', 'Technical Debt', 'SonarQube', 'Software Maintenance', 'CI/CD'],
-    href: undefined,
+    href: 'https://doi.org/10.5281/zenodo.18033027',
     abstract:
       'Technical Debt (TD) is a short-term technical decision that compromises long-term software quality and stability. Static analysis tools can identify TD but only provide diagnostic analysis without prescriptive recommendations or project-specific context. This research develops an LLM-based TD management system integrated with SonarQube and GitHub to provide prescriptive and contextual analysis at the pull request level. The system leverages GPT-4 to analyze SonarQube issues within the context of pull requests, highlighting severity, short and long-term effects, and suggested remediation actions. Evaluation using a Rule2Text LLM-as-a-judge framework on 108 TD issues from two Apache projects achieved 96% good/very good scores for prescriptive analysis and 64% for contextual analysis.',
     degree: 'Sarjana Informatika (S.Kom.)',
@@ -63,9 +62,11 @@ export default function PapersPage() {
                   >
                     <div>
                       <h4>{p.title}</h4>
-                      <div className="tags-line" style={{ marginBottom: 10 }}>
-                        <span style={{ color: 'var(--accent-amber)' }}>{p.venue}</span>
-                      </div>
+                      {(p as any).venue && (
+                        <div className="tags-line" style={{ marginBottom: 10 }}>
+                          <span style={{ color: 'var(--accent-amber)' }}>{(p as any).venue}</span>
+                        </div>
+                      )}
                       <p
                         style={{
                           fontFamily: 'var(--font-body)',

@@ -402,6 +402,144 @@ function SunkatsuCaseStudy({ openImage }: { openImage: (src: string, cap: string
   );
 }
 
+/* ─── Supabase Eval Case Study ─── */
+const SUPABASE_EVAL_SHOTS = [
+  { src: '/assets/supabase-eval/dashboard.png', cap: 'Evaluation Telemetry Dashboard' },
+  { src: '/assets/supabase-eval/metrics.png', cap: 'Detailed evaluation categories & metrics' },
+];
+
+function SupabaseEvalCaseStudy({ openImage }: { openImage: (src: string, cap: string) => void }) {
+  const [slideIdx, setSlideIdx] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setSlideIdx((prev) => (prev + 1) % SUPABASE_EVAL_SHOTS.length);
+    }, 4500);
+    return () => clearInterval(t);
+  }, []);
+
+  return (
+    <div className="case-study reveal" style={{ marginTop: 24 }}>
+      <div className="case-study-head">
+        <div>
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem', color: 'var(--text-tertiary)', letterSpacing: '0.04em', marginBottom: 14 }}>
+            2026 · AI Engineer · Database Agent & Eval Framework
+          </p>
+          <h3>Supabase Eval</h3>
+          <p>
+            An AI database assistant agent answering natural language queries over a Supabase database via an HTTP MCP server, grounded in a <strong>pgvector knowledge base</strong>. Measured by an automated <strong>LLM-as-judge eval pipeline</strong> scoring accuracy and security across 30 test scenarios.
+          </p>
+          <div className="stack-chips">
+            {['Supabase', 'Next.js', 'pgvector', 'Deno', 'Claude Sonnet', 'OpenAI Embeddings'].map((t) => (
+              <span key={t} className="stack-chip">{t}</span>
+            ))}
+          </div>
+          <div className="card-links" style={{ display: 'flex', gap: 16 }}>
+            <Link href="/projects/supabase-eval" style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+              Case Study <IconArrow className="icon-sm" />
+            </Link>
+            <a href="https://supabase-eval.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+              Live Dashboard <IconArrowUpRight className="icon-sm" />
+            </a>
+            <a href="https://github.com/Raygama/supabase-eval" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+              <IconGithub className="icon-sm" /> GitHub
+            </a>
+          </div>
+        </div>
+        <div className="case-stats">
+          {[
+            ['100%', 'Pass Rate'],
+            ['4.93/5', 'Avg Score'],
+            ['30', 'Test Cases'],
+            ['8.9s', 'Avg Latency'],
+          ].map(([num, lbl]) => (
+            <div key={lbl} className="case-stat">
+              <div className="num" style={{ color: lbl.includes('Score') ? 'var(--accent-amber)' : lbl.includes('Rate') ? 'var(--accent-green)' : 'var(--accent-teal)' }}>{num}</div>
+              <div className="lbl">{lbl}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      {/* Auto-sliding Case Gallery */}
+      <div 
+        className="case-gallery" 
+        style={{ 
+          gridTemplateColumns: '1fr', 
+          gridTemplateRows: '100%', 
+          position: 'relative',
+          aspectRatio: '16/9.5',
+          overflow: 'hidden'
+        }}
+      >
+        {SUPABASE_EVAL_SHOTS.map((s, i) => (
+          <div
+            key={s.src}
+            className="gallery-shot"
+            onClick={() => openImage(s.src, s.cap)}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              opacity: i === slideIdx ? 1 : 0,
+              pointerEvents: i === slideIdx ? 'auto' : 'none',
+              transition: 'opacity 800ms ease-in-out',
+            }}
+          >
+            <img 
+              src={s.src} 
+              alt={s.cap} 
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                padding: '0',
+                display: 'block',
+              }} 
+            />
+            <span className="shot-cap">{s.cap} (Auto-sliding · Click to zoom)</span>
+          </div>
+        ))}
+
+        {/* Carousel indicators */}
+        <div style={{
+          position: 'absolute',
+          bottom: 12,
+          right: 16,
+          display: 'flex',
+          gap: 6,
+          zIndex: 10,
+          background: 'rgba(10, 10, 15, 0.6)',
+          padding: '6px 10px',
+          borderRadius: '999px',
+          backdropFilter: 'blur(4px)',
+          border: '1px solid var(--border-subtle)',
+        }}>
+          {SUPABASE_EVAL_SHOTS.map((_, i) => (
+            <button
+              key={i}
+              onClick={(e) => {
+                e.stopPropagation();
+                setSlideIdx(i);
+              }}
+              style={{
+                width: 8,
+                height: 8,
+                borderRadius: '50%',
+                background: i === slideIdx ? 'var(--accent-teal)' : 'var(--text-tertiary)',
+                border: 'none',
+                padding: 0,
+                cursor: 'pointer',
+                transition: 'background 250ms ease',
+              }}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ─── Other Projects ─── */
 interface OtherProject {
   num: string;
@@ -699,6 +837,7 @@ export default function Home() {
             </div>
             <RizzyCaseStudy openImage={openImage} />
             <SunkatsuCaseStudy openImage={openImage} />
+            <SupabaseEvalCaseStudy openImage={openImage} />
           </div>
         </section>
         <OtherProjects />

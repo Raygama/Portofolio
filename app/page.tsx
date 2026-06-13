@@ -430,7 +430,7 @@ function SupabaseEvalCaseStudy({ openImage }: { openImage: (src: string, cap: st
             An AI database assistant agent answering natural language queries over a Supabase database via an HTTP MCP server, grounded in a <strong>pgvector knowledge base</strong>. Measured by an automated <strong>LLM-as-judge eval pipeline</strong> scoring accuracy and security across 30 test scenarios.
           </p>
           <div className="stack-chips">
-            {['Supabase', 'Next.js', 'pgvector', 'Deno', 'Claude Sonnet', 'OpenAI Embeddings'].map((t) => (
+            {['Supabase', 'Next.js', 'pgvector', 'Deno', 'Claude Sonnet', 'OpenRouter'].map((t) => (
               <span key={t} className="stack-chip">{t}</span>
             ))}
           </div>

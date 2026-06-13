@@ -362,7 +362,7 @@ function SunkatsuCaseStudy({ openImage }: { openImage: (src: string, cap: string
             delivered with 11 language localizations and full ordering flow across all platforms.
           </p>
           <div className="stack-chips">
-            {['Next.js', 'React Native', 'FastAPI', 'PostgreSQL', 'Qwen-2.5', 'Docker'].map((t) => (
+            {['React', 'Flutter', 'Spring Boot', 'WebSockets', 'Qwen-2.5', 'Docker'].map((t) => (
               <span key={t} className="stack-chip">{t}</span>
             ))}
           </div>

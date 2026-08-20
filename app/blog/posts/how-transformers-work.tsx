@@ -33,7 +33,7 @@ export default function HowTransformersWork() {
       <p>
         The transformer paper's core idea was: throw out the sequential processing entirely. Process
         every word at the same time, and let every word directly compare itself to every other word.
-        That's it. That's the insight that changed everything.
+        That's the whole idea. Everything else in the paper is engineering built around it.
       </p>
 
       <h2>Step one: tokenization</h2>
@@ -108,8 +108,8 @@ export default function HowTransformersWork() {
       <h2>Self-attention: the actual breakthrough</h2>
 
       <p>
-        This is the part the paper is named after. Everything else is useful engineering. Attention
-        is the idea that actually changed the field.
+        This is the part the paper is named after, and the part that turned out to matter. Everything
+        up to here is setup.
       </p>
 
       <p>
@@ -270,15 +270,15 @@ export default function HowTransformersWork() {
 
       <p>
         Before 2017, "scale up the model and train on more data" was not really a viable strategy.
-        Sequential processing meant training time grew too fast. The transformer made scaling feasible
-        because everything is parallelizable. That's the practical unlock.
+        Sequential processing meant training time grew too fast. Transformers made scaling feasible
+        because everything runs in parallel, which is the part that mattered in practice.
       </p>
 
       <p>
-        But the deeper change was that it turned out one architecture could work across almost every
-        domain. Text, images (Vision Transformer), audio (Whisper), protein sequences (AlphaFold 2),
-        video, code, multimodal tasks. Before transformers, different problems had different
-        architectures. After transformers, there's basically one, plus scaling and fine-tuning.
+        The bigger surprise was that one architecture turned out to work almost everywhere. Text,
+        images (Vision Transformer), audio (Whisper), protein sequences (AlphaFold 2), video, code,
+        multimodal tasks. Before transformers, different problems got different architectures. After,
+        it is mostly the same one with different data, scaled up and fine-tuned.
       </p>
 
       <p>
@@ -287,14 +287,15 @@ export default function HowTransformersWork() {
       </p>
 
       <div className="bp-callout teal" style={{ marginTop: 48 }}>
-        <strong>Quick summary</strong>
+        <strong>If you only remember one thing</strong>
         <p style={{ margin: '10px 0 0' }}>
-          Transformers replace sequential recurrence with parallel self-attention. Each token computes
-          Query, Key, and Value vectors. Attention scores are dot products between Q and K, normalized
-          with softmax, applied as weights over V. Multiple attention heads run in parallel. Positional
-          encoding injects order. Feed-forward layers store factual knowledge. Residual connections
-          keep training stable. Stack enough of these layers, train on enough tokens, and emergent
-          capabilities appear that nobody explicitly designed for.
+          Transformers threw out recurrence and let every token look at every other token at once.
+          Each one computes a Query, a Key, and a Value; the attention scores are just dot products
+          between Q and K, softmaxed and used to weight the V vectors. Everything else, the multiple
+          heads, the positional encoding, the feed-forward layers where the facts seem to live, the
+          residual connections that keep training from blowing up, is scaffolding around that one
+          move. Stack enough of it, train on enough text, and capabilities show up that nobody
+          designed for.
         </p>
       </div>
 

@@ -16,7 +16,7 @@ export const POSTS: Post[] = [
     readingTime: '14 min read',
     tags: ['LLM', 'Deep Learning', 'Transformers', 'AI'],
     excerpt:
-      'The 2017 paper that rewrote AI. Here\'s a plain-English walkthrough of every piece — from tokenization and embeddings all the way through multi-head attention and why it was such a big deal.',
+      'The 2017 paper behind every model you use now. A plain-English walk through each piece, from tokenization and embeddings up to multi-head attention, and why it beat the recurrent models it replaced.',
     coverImage: '/assets/blogs/transformer-architecture.png',
   },
 ];

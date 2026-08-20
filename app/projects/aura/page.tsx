@@ -163,9 +163,9 @@ function EmotionStage() {
         <div className="eyebrow" style={{ marginBottom: 16 }}>● live emotion preview</div>
         <h3>Five distinct emotion states drive a Live2D rig in real time.</h3>
         <p className="lede">
-          Each LLM reply is classified into an <strong>emotion vector</strong> — happy, playful, surprised,
-          companion, or idle — and the avatar&apos;s Live2D parameters (eyes, mouth, head tilt) blend toward
-          that state while the TTS audio plays. The ghost helper is summoned for companion mode.
+          Every LLM reply gets classified into one of five <strong>emotion states</strong>: happy, playful,
+          surprised, companion, or idle. The avatar&apos;s Live2D parameters (eyes, mouth, head tilt) blend
+          toward that state while the TTS audio plays. Companion mode also summons the ghost helper.
         </p>
 
         <div className="pipeline" style={{ marginBottom: 24 }}>
@@ -375,14 +375,14 @@ function AvatarRenderingSection() {
     {
       tag: '01 · blink fsm',
       title: 'Organic Blink',
-      desc: 'A finite state machine fires random timers to trigger eye blinks. Probability and cooldown vary so the blink pattern never repeats identically.',
+      desc: 'A finite state machine fires random timers for the blinks. Probability and cooldown both vary, so the pattern never repeats exactly.',
       param: 'ParamEyeLOpen / ParamEyeROpen',
       color: 'teal',
     },
     {
       tag: '02 · saccades',
       title: 'Eye Saccades',
-      desc: 'Micro-randomization is added to gaze direction every frame via Math.random(). The eyes drift like real eyes — never perfectly still.',
+      desc: 'Every frame adds a little randomization to gaze direction via Math.random(), so the eyes drift the way real eyes do and never sit perfectly still.',
       param: 'ParamEyeBallX / ParamEyeBallY',
       color: 'amber',
     },
@@ -418,8 +418,8 @@ function AvatarRenderingSection() {
               ))}
             </div>
             <p style={{ fontSize: '0.88rem', lineHeight: 1.65, color: 'var(--text-secondary)', marginTop: 20, marginBottom: 0 }}>
-              The avatar runs <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>entirely in the browser</strong> — no VTube Studio,
-              no external process. The animation loop is monkey-patched into{' '}
+              The avatar runs <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>entirely in the browser</strong>, with no VTube Studio
+              and no external process. The animation loop is monkey-patched into{' '}
               <span className="mono-tag">coreModel.update()</span> so every frame
               gets injected parameters right before GPU commit.
             </p>
@@ -482,8 +482,8 @@ function AIMemorySection() {
               <span className="mono-tag" style={{ color: 'var(--accent-teal)' }}>ingestion pipeline</span>
               <h4>Teaching AURA</h4>
               <p>
-                Upload any document. AURA ingests, chunks, and embeds it — the knowledge
-                becomes instantly searchable during live conversation.
+                Upload any document. AURA chunks and embeds it, and the contents are searchable
+                in the middle of a live conversation.
               </p>
             </div>
             <div className="memory-flow">
@@ -507,8 +507,8 @@ function AIMemorySection() {
               <span className="mono-tag" style={{ color: 'var(--accent-amber)' }}>retrieval · per turn</span>
               <h4>AURA Remembers</h4>
               <p>
-                Every utterance triggers a semantic search. Matching chunks are silently
-                injected into the LLM context — AURA appears to just know.
+                Every utterance triggers a semantic search. Matching chunks get injected into the
+                LLM context with no visible step, so AURA just seems to know.
               </p>
             </div>
             <div className="memory-flow">
@@ -552,7 +552,7 @@ function InterfaceSection({ openImage }: { openImage: (src: string, cap: string)
         <SectionHeader
           num="06"
           title="The Interface"
-          annot="not just an avatar — a full control surface"
+          annot="the avatar plus the whole control surface"
         />
         <div className="interface-grid reveal">
           <button
@@ -565,7 +565,7 @@ function InterfaceSection({ openImage }: { openImage: (src: string, cap: string)
               <div className="cap-label"><span className="mono-tag">01</span> Chat surface</div>
               <p>
                 Side-by-side conversation log with per-message emotion tags. Conversations are organized into{' '}
-                <strong>contexts</strong> — each one keeps its own memory and personality settings.
+                <strong>contexts</strong>, and each one keeps its own memory and personality settings.
               </p>
             </div>
           </button>
@@ -578,8 +578,8 @@ function InterfaceSection({ openImage }: { openImage: (src: string, cap: string)
             <div className="interface-cap">
               <div className="cap-label"><span className="mono-tag">02</span> System Control Center</div>
               <p>
-                Hot-swap the LLM provider, model architecture, personality engine sliders, and API keys at runtime.
-                No restart. The whole AI brain is <strong>reconfigurable from the browser</strong>.
+                Hot-swap the LLM provider, model architecture, personality sliders, and API keys at runtime.
+                Nothing restarts. The whole brain is <strong>reconfigurable from the browser</strong>.
               </p>
             </div>
           </button>
@@ -601,11 +601,11 @@ function HighlightsSection() {
             <ul className="spot-highlights">
               {[
                 ['End-to-end voice loop', 'under 800ms from speech end to TTS start.'],
-                ['Multilingual', 'input/output — Deepgram + Qwen 3 handle EN ↔ ID switching mid-sentence.'],
+                ['Multilingual', 'in and out. Deepgram and Qwen 3 handle EN/ID switching mid-sentence.'],
                 ['Five-state emotion system', 'with prompt-based classification per turn.'],
                 ['Live2D rig', 'driven by emotion vectors, lip-sync from TTS phonemes.'],
-                ['Hot-reload model swap', '— change LLM provider/model live from the control center.'],
-                ['Per-context memory', '— every chat keeps its own personality, history, and creativity dial.'],
+                ['Hot-reload model swap', 'to change LLM provider or model live from the control center.'],
+                ['Per-context memory', 'so every chat keeps its own personality, history, and creativity dial.'],
               ].map(([bold, rest]) => (
                 <li key={bold}>
                   <span className="marker">✦</span>
@@ -618,10 +618,10 @@ function HighlightsSection() {
             <h4 className="hl-title">What&apos;s next</h4>
             <ul className="spot-highlights">
               {[
-                ['Tool use', '— function-calling for calendar, search, code execution.'],
+                ['Tool use', 'via function-calling for calendar, search, and code execution.'],
                 ['Long-term memory', 'with vector recall across contexts.'],
-                ['Vision input', '— webcam frame analysis so AURA can see what you\'re working on.'],
-                ['Avatar marketplace', '— pluggable Live2D rigs with rig-aware emotion mapping.'],
+                ['Vision input', 'from webcam frames, so AURA can see what you\'re working on.'],
+                ['Avatar marketplace', 'with pluggable Live2D rigs and rig-aware emotion mapping.'],
                 ['Mobile client', 'for the conversation loop.'],
                 ['v1.0', 'when emotion classification moves on-device.'],
               ].map(([bold, rest]) => (
@@ -648,12 +648,12 @@ function BottomCTA() {
             <div className="eyebrow" style={{ marginBottom: 14 }}>§ 08 · talk to me about AURA</div>
             <h3>Building real-time AI? Let&apos;s compare notes.</h3>
             <p style={{ color: 'var(--text-secondary)', maxWidth: 480, lineHeight: 1.7, margin: 0 }}>
-              I&apos;m always happy to swap notes on Live2D rigging, sub-second voice pipelines, or
-              emotion classification prompts. Or if you want AURA&apos;s roadmap to head somewhere
-              specific — let me know.
+              I&apos;m always up for swapping notes on Live2D rigging, sub-second voice pipelines, or
+              emotion classification prompts. And if you want AURA&apos;s roadmap to head somewhere
+              specific, tell me.
             </p>
             <div className="contact-loc">
-              currently in South Tangerang, Indonesia — async-friendly across timezones
+              currently in South Tangerang, Indonesia, async-friendly across timezones
             </div>
           </div>
           <div className="contact-actions">

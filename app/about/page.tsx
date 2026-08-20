@@ -45,17 +45,16 @@ function AboutHero() {
           <div>
             <p className="about-hero-lede">
               I&apos;m <strong>M. Daffa Raygama</strong>, an AI Engineer building production LLM systems,
-              real-time voice pipelines, and multi-agent architectures. CS graduate from{' '}
+              real-time voice pipelines, and multi-agent architectures. Informatics graduate from{' '}
               <strong>Telkom University</strong> with a 3.96/4.00 GPA.
             </p>
             <p className="about-hero-lede">
-              Currently at <strong>PT Sigma Cipta Utama</strong>, I design and ship AI infrastructure
-              that runs in production from RAG pipelines serving users to a real-time
-              LLM systems. I care about latency, reliability, and
-              making AI systems actually useful.
+              Currently at <strong>PT Sigma Cipta Utama</strong>, where I design and ship AI infrastructure
+              that has to survive real traffic: RAG pipelines with users on the other end, real-time LLM
+              services, and the plumbing around both. Latency and reliability are the parts I get stuck on.
             </p>
             <p className="about-hero-lede">
-              Long term, I&apos;m pursuing a <strong>MEXT research scholarship</strong> to Japan for
+              Longer term, I&apos;m applying for a <strong>MEXT research scholarship</strong> to Japan for
               postgrad research in affective computing and multi-modal AI.
             </p>
           </div>
@@ -74,8 +73,8 @@ function AboutHero() {
             <div className="info-row">
               <span className="k">LinkedIn</span>
               <span className="v">
-                <a href="https://linkedin.com/in/mdaffaraygama" target="_blank" rel="noopener noreferrer">
-                  daffaraygama
+                <a href="https://www.linkedin.com/in/mdaffaraygama" target="_blank" rel="noopener noreferrer">
+                  mdaffaraygama
                 </a>
               </span>
             </div>
@@ -123,7 +122,7 @@ function Experience() {
       ],
     },
     {
-      period: '2023 — 2025',
+      period: 'Aug 2024 — Jan 2026',
       title: 'Lab Assistant & Researcher — Advanced Software Engineering',
       org: 'Telkom University',
       location: 'Bandung, Indonesia',
@@ -207,12 +206,12 @@ function Education() {
         </div>
         <div className="edu-card reveal">
           <div>
-            <h3>Bachelor of Computer Science</h3>
+            <h3>Bachelor of Informatics (S.Kom)</h3>
             <div className="where">Telkom University — Bandung, Indonesia</div>
             <div className="edu-meta">
               <div className="edu-meta-row">
                 <span className="k">Period</span>
-                <span className="v">2021 — 2025</span>
+                <span className="v">Aug 2022 — Jan 2026</span>
               </div>
               <div className="edu-meta-row">
                 <span className="k">GPA</span>
@@ -348,17 +347,15 @@ function Goals() {
         <div className="goals-box reveal">
           <div className="head">// goals &amp; research interests</div>
           <p>
-            Pursuing a <strong>MEXT scholarship</strong> for postgrad research in Japan. My research
-            interests sit at the intersection of affective computing, multi-modal AI, and human-AI
-            interaction — specifically how AI systems can adapt their behavior based on emotional
-            and contextual signals in real-time.
+            Pursuing a <strong>MEXT scholarship</strong> for postgrad research in Japan. What I want to
+            work on is affective computing: how a system can read emotional and contextual signals and
+            adjust how it behaves while the conversation is still going, not after the fact.
           </p>
           <p>
-            Long-term: contribute to <strong>open-source AI tooling</strong>, publish research on
-            LLM agent systems, and work on global remote teams building AI infrastructure that
-            matters at scale.
+            After that, I want to keep contributing to <strong>open-source AI tooling</strong> and publish
+            more on LLM agent systems, ideally from a remote team that ships to real users.
           </p>
-          <span className="annot">building in public, learning in public</span>
+          <span className="annot">still figuring most of it out</span>
         </div>
       </div>
     </section>
@@ -371,9 +368,9 @@ function ContactCTA() {
       <div className="page">
         <div className="contact-strip reveal">
           <div>
-            <h3>Let&apos;s work together</h3>
+            <h3>Want to work on something?</h3>
             <p style={{ color: 'var(--text-secondary)', margin: 0 }}>
-              Open to AI/LLM roles, research collaborations, and interesting projects.
+              I&apos;m open to AI/LLM roles, research collaborations, and side projects.
             </p>
             <div className="open">
               Open to <span className="pill">Full-time</span>{' '}
@@ -387,7 +384,7 @@ function ContactCTA() {
               <span><IconMail className="icon-sm" /> daffraygama@gmail.com</span>
               <span className="arrow">→</span>
             </a>
-            <a href="https://linkedin.com/in/daffaraygama" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/mdaffaraygama" target="_blank" rel="noopener noreferrer">
               <span><IconLinkedin className="icon-sm" /> LinkedIn</span>
               <span className="arrow">→</span>
             </a>

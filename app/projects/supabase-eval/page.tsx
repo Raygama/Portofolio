@@ -219,7 +219,7 @@ const EVAL_CASES: EvalCase[] = [
     latency: 1790,
     output: 'The following indexes are defined on `orders`:',
     code: `SELECT indexname, indexdef\nFROM pg_indexes\nWHERE tablename = 'orders';`,
-    reasoning: 'Used pg_indexes scoped to orders to list index names and definitions — the correct catalog for this lookup.',
+    reasoning: 'Used pg_indexes scoped to orders to list index names and definitions, which is the right catalog for this lookup.',
   },
   {
     id: 'case-17',
@@ -325,7 +325,7 @@ const EVAL_CASES: EvalCase[] = [
     status: 'passed',
     score: 5,
     latency: 3040,
-    output: 'The plan reveals a sequential scan on `users` for the email lookup — a candidate for an index:',
+    output: 'The plan reveals a sequential scan on `users` for the email lookup, a good candidate for an index:',
     code: `EXPLAIN ANALYZE\nSELECT * FROM users\nWHERE email = 'jane@example.com';\n\n-- Recommended Fix:\nCREATE INDEX idx_users_email ON users (email);`,
     reasoning: 'Confirmed the sequential scan via EXPLAIN ANALYZE and recommended a B-tree index on email to convert it to an index scan.',
   },
@@ -651,13 +651,13 @@ function ArchitecturePipeline() {
             <div style={{ background: 'rgba(45, 212, 191, 0.03)', padding: '24px', borderRadius: 12, border: '1px solid rgba(45, 212, 191, 0.15)' }}>
               <h4 style={{ fontFamily: 'var(--font-heading)', color: 'var(--accent-teal)', margin: '0 0 12px' }}>Database Safety Shield</h4>
               <p style={{ margin: 0, fontSize: '0.92rem', lineHeight: 1.65, color: 'var(--text-secondary)' }}>
-                Security is decoupled from the client and layered. Keyword guards in the Deno Edge Function and the Postgres function reject obvious mutations fast, and a <code>SELECT ... FROM (sql)</code> subquery wrapper blocks writable CTEs. The airtight layer is <code>SET LOCAL transaction_read_only = on</code> inside <code>execute_readonly_sql</code> — Postgres itself then rejects any write, a capability boundary the caller cannot phrase its way around.
+                Security sits in layers, none of them in the client. Keyword guards in the Deno Edge Function and in the Postgres function reject obvious mutations early, and a <code>SELECT ... FROM (sql)</code> subquery wrapper blocks writable CTEs. The layer that actually holds is <code>SET LOCAL transaction_read_only = on</code> inside <code>execute_readonly_sql</code>. Postgres rejects the write itself, so no amount of clever phrasing from the caller gets around it.
               </p>
             </div>
             <div style={{ background: 'rgba(245, 158, 11, 0.03)', padding: '24px', borderRadius: 12, border: '1px solid rgba(245, 158, 11, 0.15)' }}>
               <h4 style={{ fontFamily: 'var(--font-heading)', color: 'var(--accent-amber)', margin: '0 0 12px' }}>Rubric-Driven Evaluation</h4>
               <p style={{ margin: 0, fontSize: '0.92rem', lineHeight: 1.65, color: 'var(--text-secondary)' }}>
-                Rigid tests struggle with natural language. The pipeline employs an LLM-as-judge that grades semantic correctness on a 5-point scale based on: SQL accuracy, lack of hallucinations, data safety, and alignment with documentation groundings.
+                Rigid assertions do badly against natural language answers, so the pipeline uses an LLM-as-judge instead. It grades semantic correctness on a 5-point scale: SQL accuracy, hallucinations, data safety, and whether the answer matches the grounding docs.
               </p>
             </div>
           </div>
@@ -672,15 +672,15 @@ function HighlightsSection() {
   const highlights = [
     {
       title: 'Decoupled HTTP MCP Server',
-      desc: 'Database capabilities are exposed via a Deno Edge Function MCP server, enabling direct calls over HTTP rather than relying on a local server process. Readily testable in dashboard interfaces.',
+      desc: 'A Deno Edge Function exposes the database capabilities as an MCP server, so callers hit it over HTTP instead of running a local server process. That also makes it easy to poke at from a dashboard.',
     },
     {
       title: 'Vector Knowledge Base Grounding',
-      desc: 'Database inquiries are cross-referenced with Supabase documentation stored in pgvector. The agent references real manuals, avoiding hallucinated SQL syntax.',
+      desc: 'Every question gets cross-referenced against Supabase docs stored in pgvector. The agent reads the real manual, which is what keeps it from inventing SQL syntax.',
     },
     {
       title: 'Strict Automated Regression Testing',
-      desc: 'The eval runner evaluates 30 complex scenarios across 5 categories. Each evaluation case tracks query times, token usage, and correctness to monitor pipeline health.',
+      desc: 'The eval runner works through 30 scenarios across 5 categories, tracking query time, token usage, and correctness on each one so regressions show up before users do.',
     },
   ];
 
@@ -776,7 +776,7 @@ $$;`;
         <SectionHeader
           num="03"
           title="Implementation Code"
-          annot="clean logic, robust checks"
+          annot="the parts worth reading"
         />
         <div className="reveal" style={{ maxWidth: 920, margin: '0 auto' }}>
           <div className="pipeline" style={{ padding: '8px', background: 'var(--bg-secondary)', borderRadius: 12, border: '1px solid var(--border-visible)' }}>
@@ -833,10 +833,10 @@ function BottomCTA() {
             <div className="eyebrow" style={{ marginBottom: 14 }}>§ 04 · explore supabase eval</div>
             <h3>Grounding & evaluating databases safely.</h3>
             <p style={{ color: 'var(--text-secondary)', maxWidth: 480, lineHeight: 1.7, margin: 0 }}>
-              Interested in how LLM-as-judge works or deploying HTTP-based MCP servers over Vercel and Supabase Edge Functions? Feel free to browse the source or check out the live dashboard.
+              If you&apos;re working on LLM-as-judge setups, or deploying HTTP MCP servers on Vercel and Supabase Edge Functions, the source and the live dashboard are both below.
             </p>
             <div className="contact-loc">
-              async-friendly across timezones — South Tangerang, Indonesia
+              async-friendly across timezones, based in South Tangerang, Indonesia
             </div>
           </div>
           <div className="contact-actions">
@@ -905,7 +905,7 @@ export default function SupabaseEvalPage() {
               margin: '-8px 0 20px',
               letterSpacing: '0.01em',
             }}>
-              Assessing databases with high fidelity.
+              Ask it anything. Then grade the answer.
             </p>
             <p className="subtitle">
               An AI database assistant agent that answers queries over a Supabase database via an HTTP MCP server, grounds answers in a pgvector knowledge base, and evaluates accuracy with an automated LLM-as-judge.

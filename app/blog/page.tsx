@@ -32,8 +32,8 @@ export default function BlogPage() {
             </div>
             <h1>Writing</h1>
             <p className="subtitle">
-              Notes on AI engineering, LLM systems, real-time infrastructure, and open-source.
-              Published when something is worth sharing.
+              Notes on AI engineering, LLM systems, and real-time infrastructure. I post when I
+              actually have something worth posting, which is not often.
             </p>
           </div>
         </div>

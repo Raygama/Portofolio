@@ -100,8 +100,8 @@ function Hero() {
           </div>
           <p className="hero-bio">
             Building <strong>production LLM systems</strong> and real-time AI pipelines at{' '}
-            <strong>PT Sigma Cipta Utama</strong>. Telkom University CS grad, 3.96 GPA.
-            Passionate about open-source AI tooling and multi-agent architectures.
+            <strong>PT Sigma Cipta Utama</strong>. Informatics grad from Telkom University, 3.96 GPA.
+            Most of my spare time goes to open-source AI tooling and multi-agent setups.
           </p>
           <div className="hero-ctas">
             <Link href="/projects/aura" className="btn btn-primary">
@@ -115,7 +115,7 @@ function Hero() {
             <a href="https://github.com/raygama" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <IconGithub />
             </a>
-            <a href="https://linkedin.com/in/daffaraygama" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/mdaffaraygama" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <IconLinkedin />
             </a>
             <a href="mailto:daffraygama@gmail.com" aria-label="Email">
@@ -358,8 +358,8 @@ function SunkatsuCaseStudy({ openImage }: { openImage: (src: string, cap: string
           <h3>Sunkatsu App</h3>
           <p>
             Digital ordering platform for <strong>Sunkatsu</strong>, a Japanese restaurant in Telkom University&apos;s campus cafeteria.
-            Spans web, mobile, and a <strong>Qwen-2.5 AI chatbot</strong>. Led a team of 6 as PM and handled frontend architecture
-            delivered with 11 language localizations and full ordering flow across all platforms.
+            Spans web, mobile, and a <strong>Qwen-2.5 AI chatbot</strong>. I led a team of 6 as PM and owned the frontend
+            architecture. Shipped with 11 language localizations and the full ordering flow on every platform.
           </p>
           <div className="stack-chips">
             {['React', 'Flutter', 'Spring Boot', 'WebSockets', 'Qwen-2.5', 'Docker'].map((t) => (
@@ -674,17 +674,17 @@ function AboutSnapshot() {
           <div className="about-text">
             <p>
               I&apos;m a <strong>Junior AI Engineer</strong> at PT Sigma Cipta Utama, currently building
-              production LLM systems and real-time AI infrastructure. CS graduate from Telkom University
-              with a 3.96/4.00 GPA.
+              production LLM systems and real-time AI infrastructure. Informatics graduate from Telkom
+              University with a 3.96/4.00 GPA.
             </p>
             <p>
-              My work spans <strong>LLM agent pipelines</strong>, real-time audio/video AI (WebRTC),
-              RAG systems, and microservices. I care deeply about making AI systems that actually work
-              in production — low latency, high reliability.
+              Day to day that means <strong>LLM agent pipelines</strong>, real-time audio/video over WebRTC,
+              RAG systems, and the microservices holding them together. What I actually care about is whether
+              the thing survives production: low latency, and not falling over at 2am.
             </p>
             <p>
-              I&apos;m pursuing a <strong>MEXT research scholarship</strong> to continue AI research
-              in Japan, focused on affective computing and multi-modal AI systems.
+              I&apos;m also applying for a <strong>MEXT research scholarship</strong> to continue AI research
+              in Japan, on affective computing and multi-modal systems.
             </p>
             <Link href="/about" className="read-more">
               Read full bio <IconArrow className="icon-sm" />
@@ -754,9 +754,9 @@ function ContactCTA() {
       <div className="page">
         <div className="contact-strip reveal">
           <div>
-            <h3>Let&apos;s build something together</h3>
+            <h3>Got something you want built?</h3>
             <p style={{ color: 'var(--text-secondary)', margin: 0 }}>
-              Open to interesting AI/LLM projects, research collaborations, and full-time roles.
+              I&apos;m open to AI/LLM work, research collaborations, and full-time roles.
             </p>
             <div className="open">
               Open to <span className="pill">Full-time</span> <span className="pill">Remote</span> <span className="pill">Research</span>
@@ -768,7 +768,7 @@ function ContactCTA() {
               <span><IconMail className="icon-sm" /> daffraygama@gmail.com</span>
               <span className="arrow">→</span>
             </a>
-            <a href="https://linkedin.com/in/daffaraygama" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/mdaffaraygama" target="_blank" rel="noopener noreferrer">
               <span><IconLinkedin className="icon-sm" /> LinkedIn</span>
               <span className="arrow">→</span>
             </a>

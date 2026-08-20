@@ -307,7 +307,6 @@ function Skills() {
 
 function Certifications() {
   const certs = [
-    'Microsoft AI-900 — Azure AI Fundamentals',
     'Go Backend Development — Dicoding',
     'Microservices with Go — Dicoding',
   ];
